@@ -145,6 +145,12 @@ public class UserMapping {
             configNames.addAll(userNameToConfigNames.get(userName));
         }
 
+        /* Allowing wildcard users https://github.com/voegelas/guacamole-auth-pam/issues/6 */
+        /* Code Added by joharri9 */
+        if (userNameToConfigNames.containsKey("*")) {
+            configNames.addAll(userNameToConfigNames.get("*"));
+        }
+
         for (String groupName : groupNames) {
             if (groupNameToConfigNames.containsKey(groupName)) {
                 configNames.addAll(groupNameToConfigNames.get(groupName));
